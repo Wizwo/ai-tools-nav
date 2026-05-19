@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具详情 | aiux.top</title>
+    <meta name="description" content="AI工具详情页 - 查看工具详细介绍、功能特点和使用方式">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deepest: #0a0a0f;
+            --bg-deep: #12121a;
+            --bg-card: #1a1a25;
+            --bg-card-hover: #222230;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0b0;
+            --text-muted: #666680;
+            --accent: #c8a96e;
+            --accent-glow: rgba(200, 169, 110, 0.15);
+            --accent-gradient: linear-gradient(135deg, #c8a96e, #d4b87a);
+            --border: #2a2a3a;
+            --shadow: 0 4px 24px rgba(0,0,0,0.4);
+            --radius: 12px;
+        }
+        [data-theme="light"] {
+            --bg-deepest: #f8f8fa;
+            --bg-deep: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f4f4f8;
+            --text-primary: #1a1a2e;
+            --text-secondary: #555570;
+            --text-muted: #999aab;
+            --accent: #9b7b3a;
+            --accent-glow: rgba(155, 123, 58, 0.08);
+            --accent-gradient: linear-gradient(135deg, #9b7b3a, #b8944f);
+            --border: #e5e5ee;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg-deepest); color: var(--text-primary);
+            min-height: 100vh; line-height: 1.6;
+        }
+        ::selection { background: var(--accent-glow); color: var(--accent); }
+        
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg-deepest);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--accent); text-decoration: none;
+        }
+        .nav-back { margin-left: auto; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+        .nav-back:hover { color: var(--accent); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+        .tool-header {
+            display: flex; gap: 2rem; align-items: flex-start;
+            padding: 2rem; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+        .tool-icon-large {
+            width: 80px; height: 80px; border-radius: 16px;
+            background: var(--accent-glow);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; flex-shrink: 0;
+        }
+        .tool-info h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+        .tool-info .desc { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1rem; }
+        .tool-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .meta-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--text-muted); font-size: 0.85rem;
+        }
+        .btn-visit {
+            display: inline-block; margin-top: 1.5rem;
+            background: var(--accent-gradient); color: #000;
+            padding: 0.75rem 2rem; border-radius: 8px;
+            font-weight: 600; text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .btn-visit:hover { opacity: 0.85; }
+
+        .section { margin-bottom: 2rem; }
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+        }
+        .feature-list {
+            list-style: none; display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+        .feature-list li {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1rem;
+            font-size: 0.9rem; color: var(--text-secondary);
+        }
+        .feature-list li::before { content: "✦ "; color: var(--accent); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem; text-align: center;
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .tool-header { flex-direction: column; text-align: center; }
+            .tool-icon-large { margin: 0 auto; }
+            .feature-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">AI Tools Nav</a>
+            <a href="/" class="nav-back">← 返回首页</a>
+        </div>
+    </nav>
+
+    <div class="container" id="toolDetail">
+        <div class="tool-header">
+            <div class="tool-icon-large" id="toolIcon">💬</div>
+            <div class="tool-info">
+                <h1 id="toolName">加载中...</h1>
+                <p class="desc" id="toolDesc"></p>
+                <div class="tool-meta">
+                    <span class="meta-item" id="toolCat"></span>
+                    <span class="meta-item" id="toolPrice"></span>
+                </div>
+                <a href="#" class="btn-visit" id="toolUrl" target="_blank">访问官网 →</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>功能特点</h2>
+            <ul class="feature-list" id="features"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 <a href="https://aiux.top">aiux.top</a> · AI工具导航</p>
+    </footer>
+
+    <script>
+        const tools = {
+            "chatgpt": {icon:"💬",name:"ChatGPT",desc:"OpenAI开发的最强AI对话模型，支持写作、编程、分析等多场景应用",cat:"聊天AI",price:"免费 / Plus $20/月",url:"https://chat.openai.com",features:["GPT-4级别推理能力","支持多轮对话和上下文理解","代码生成与调试","图像分析和生成","插件生态丰富","API接口开放"]},
+            "claude": {icon:"🧠",name:"Claude",desc:"Anthropic的AI助手，以长文本分析和安全性著称",cat:"聊天AI",price:"免费 / Pro $20/月",url:"https://claude.ai",features:["200K超长上下文","精准长文本分析","安全对话设计","代码辅助","多语言支持","文件上传分析"]},
+            "midjourney": {icon:"🎨",name:"Midjourney",desc:"顶级AI绘画工具，文字描述即可生成高质量艺术作品",cat:"AI绘画",price:"$10/月起",url:"https://midjourney.com",features:["高质量图像生成","多种艺术风格","参数精细控制","社区创作交流","持续模型更新","商业使用权"]},
+            "perplexity": {icon:"🔍",name:"Perplexity",desc:"AI搜索引擎，实时搜索并总结可信信息源",cat:"AI搜索",price:"免费 / Pro $20/月",url:"https://perplexity.ai",features:["实时联网搜索","信息源引用","深度研究模式","多轮追问","文件上传分析","API接口"]},
+            "gemini": {icon:"🌐",name:"Google Gemini",desc:"Google多模态AI，支持文本、图像、音频、视频处理",cat:"聊天AI",price:"免费 / Advanced",url:"https://gemini.google.com",features:["多模态理解","Google生态集成","代码分析","图像识别","长上下文","免费额度充足"]},
+            "grok": {icon:"⚡",name:"Grok",desc:"xAI的实时AI助手，与数据、图像、代码和实时搜索对话",cat:"聊天AI",price:"免费 / X Premium",url:"https://grok.x.ai",features:["实时信息获取","X平台深度集成","多模态支持","幽默对话风格","图像生成","代码编写"]}
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get('tool') || 'chatgpt';
+        const tool = tools[slug] || tools['chatgpt'];
+
+        document.getElementById('toolIcon').textContent = tool.icon;
+        document.getElementById('toolName').textContent = tool.name;
+        document.getElementById('toolDesc').textContent = tool.desc;
+        document.getElementById('toolCat').innerHTML = '📂 ' + tool.cat;
+        document.getElementById('toolPrice').innerHTML = '💲 ' + tool.price;
+        document.getElementById('toolUrl').href = tool.url;
+        document.getElementById('features').innerHTML = tool.features.map(f => `<li>${f}</li>`).join('');
+    </script>
+</body>
+</html>

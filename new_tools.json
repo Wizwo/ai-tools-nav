@@ -1,0 +1,202 @@
+{
+  "source": "爬取自 Futurepedia.io + TheresAnAIForThat.com",
+  "crawl_date": "2026-05-19",
+  "new_tools": [
+    {
+      "name": "UGO",
+      "url": "https://ugo.ai",
+      "description": "自主化营销团队，自动创建和发布社交媒体、博客、SEO和广告内容",
+      "category": "营销",
+      "pricing": "免费起步 / $99/月起",
+      "tags": ["marketing", "social media", "SEO"]
+    },
+    {
+      "name": "CrafterQ AI",
+      "url": "https://crafterq.ai",
+      "description": "AI客服聊天机器人，自动回复网站访客、捕获线索、分流工单",
+      "category": "客户服务",
+      "pricing": "免费起步",
+      "tags": ["customer support", "chatbot", "sales"]
+    },
+    {
+      "name": "HubSpot AEO",
+      "url": "https://hubspot.com/aeo",
+      "description": "查看和优化AI搜索引擎对你品牌的推荐方式（AI引擎优化）",
+      "category": "营销",
+      "pricing": "付费",
+      "tags": ["SEO", "marketing", "AI optimization"]
+    },
+    {
+      "name": "WriteHybrid",
+      "url": "https://writehybrid.com",
+      "description": "将AI生成的草稿转化为自然、通过AI检测的人类风格写作",
+      "category": "写作",
+      "pricing": "免费起步",
+      "tags": ["writing", "AI detection", "paraphrasing"]
+    },
+    {
+      "name": "UpSynth",
+      "url": "https://upsynth.ai",
+      "description": "AI图像放大、修复和选择性编辑，精准控制每个细节",
+      "category": "图像",
+      "pricing": "免费起步",
+      "tags": ["image editing", "upscale", "repair"]
+    },
+    {
+      "name": "GanttPRO",
+      "url": "https://ganttpro.com",
+      "description": "将自然语言描述自动转化为详细甘特图项目计划",
+      "category": "办公效率",
+      "pricing": "免费起步",
+      "tags": ["project management", "gantt", "productivity"]
+    },
+    {
+      "name": "Nimbalyst",
+      "url": "https://nimbalyst.dev",
+      "description": "AI辅助代码编辑、文档撰写和图表绘制，变更可审查",
+      "category": "开发",
+      "pricing": "免费起步",
+      "tags": ["code assistant", "workflow", "AI agents"]
+    },
+    {
+      "name": "FaceHub AI",
+      "url": "https://facehub.ai",
+      "description": "为自己创建惊艳的AI精修照片，角色姿态控制与概念草图",
+      "category": "图像",
+      "pricing": "免费起步 / $4.99起",
+      "tags": ["portraits", "photos", "avatars"]
+    },
+    {
+      "name": "CloudContact AI",
+      "url": "https://cloudcontact.ai",
+      "description": "金融行业TCPA合规的短信和邮件自动化营销",
+      "category": "营销",
+      "pricing": "免费起步 / $25/月起",
+      "tags": ["SMS", "email", "marketing"]
+    },
+    {
+      "name": "AI Product Photography",
+      "url": "https://aiproductphotography.app",
+      "description": "一张产品照片即可生成完整的电商图片套装",
+      "category": "电商",
+      "pricing": "免费起步 / $19.99/月起",
+      "tags": ["product images", "ecommerce", "photography"]
+    },
+    {
+      "name": "MusVideo",
+      "url": "https://musvideo.ai",
+      "description": "用AI将你的音乐转化为电影级视频MV",
+      "category": "视频",
+      "pricing": "$22.49/月起",
+      "tags": ["music videos", "video", "creative"]
+    },
+    {
+      "name": "PatentFig AI",
+      "url": "https://patentfig.ai",
+      "description": "从照片或草图生成符合USPTO标准的专利申请附图",
+      "category": "专业工具",
+      "pricing": "免费起步 / $20/月起",
+      "tags": ["patent", "legal", "drawings"]
+    },
+    {
+      "name": "Flyne AI",
+      "url": "https://flyne.ai",
+      "description": "将你的照片一键转化为惊艳的AI视频",
+      "category": "视频",
+      "pricing": "免费起步 / $9.99/月起",
+      "tags": ["videos", "photo to video", "creative"]
+    },
+    {
+      "name": "Silky AI",
+      "url": "https://silky.ai",
+      "description": "AI换发型，秒速试遍各种新发型",
+      "category": "图像",
+      "pricing": "免费起步 / $3起",
+      "tags": ["hairstyles", "beauty", "fashion"]
+    },
+    {
+      "name": "InstantTranscriber",
+      "url": "https://instanttranscriber.ai",
+      "description": "几分钟内将音频和视频转化为精准文字记录",
+      "category": "办公效率",
+      "pricing": "免费起步 / $9.99/月起",
+      "tags": ["transcription", "audio", "productivity"]
+    }
+  ],
+  "trending_tools": [
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
+      "description": "研究和创作、自动化任务——AI领域领导者",
+      "category": "聊天AI",
+      "votes": 6467
+    },
+    {
+      "name": "Midjourney",
+      "url": "https://midjourney.com",
+      "description": "释放真正的数字艺术创造力",
+      "category": "AI绘画",
+      "votes": 3936
+    },
+    {
+      "name": "Perplexity",
+      "url": "https://perplexity.ai",
+      "description": "即时查找和总结可信的网络信息",
+      "category": "AI搜索",
+      "votes": 1364
+    },
+    {
+      "name": "Google Gemini",
+      "url": "https://gemini.google.com",
+      "description": "跨文本、图像、音频、视频的多模态推理",
+      "category": "聊天AI",
+      "votes": 1252
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "description": "更快地创建、分析和调试内容与代码",
+      "category": "聊天AI",
+      "votes": 918
+    },
+    {
+      "name": "Grok",
+      "url": "https://grok.x.ai",
+      "description": "与数据、图像、代码和实时搜索对话",
+      "category": "聊天AI",
+      "votes": 476
+    }
+  ],
+  "ai_news": [
+    {
+      "title": "AI引擎优化（AEO）成为新趋势",
+      "summary": "HubSpot推出AEO工具，帮助品牌优化在AI搜索引擎中的推荐效果。AI Search正在改变传统SEO格局。",
+      "source": "Futurepedia",
+      "date": "2026-05"
+    },
+    {
+      "title": "自主AI营销代理崛起",
+      "summary": "UGO等新一代AI工具实现全自动社交媒体、博客、SEO内容创作和发布，预示营销自动化进入新阶段。",
+      "source": "TAAFT/Futurepedia",
+      "date": "2026-05"
+    },
+    {
+      "title": "AI工具数量突破49,000",
+      "summary": "TheresAnAIForThat.com收录AI工具已达49,218个，AI迷你工具35,163个，AI公司6,469家。AI生态持续高速扩张。",
+      "source": "TAAFT",
+      "date": "2026-05-19"
+    },
+    {
+      "title": "多模态AI全面普及",
+      "summary": "Gemini、Grok等大模型全面支持文本+图像+代码+音频+视频多模态交互，AI的使用方式发生根本变化。",
+      "source": "Futurepedia",
+      "date": "2026-05"
+    },
+    {
+      "title": "AI合规与反检测工具需求上升",
+      "summary": "WriteHybrid等反AI检测写作工具出现，反映市场对AI内容合规性和自然化的强烈需求。",
+      "source": "Futurepedia",
+      "date": "2026-05"
+    }
+  ]
+}

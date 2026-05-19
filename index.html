@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具导航 - 发现最好的AI工具 | aiux.top</title>
+    <meta name="description" content="AI工具导航 - 收录最全的AI工具、AI网站、AI应用。涵盖ChatGPT、Claude、Midjourney等热门AI，每日更新最新AI资讯。">
+    <link rel="canonical" href="https://aiux.top/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deepest: #0a0a0f;
+            --bg-deep: #12121a;
+            --bg-card: #1a1a25;
+            --bg-card-hover: #222230;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0b0;
+            --text-muted: #666680;
+            --accent: #c8a96e;
+            --accent-glow: rgba(200, 169, 110, 0.15);
+            --accent-gradient: linear-gradient(135deg, #c8a96e, #d4b87a);
+            --border: #2a2a3a;
+            --border-light: #333345;
+            --shadow: 0 4px 24px rgba(0,0,0,0.4);
+            --radius: 12px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        [data-theme="light"] {
+            --bg-deepest: #f8f8fa;
+            --bg-deep: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f4f4f8;
+            --text-primary: #1a1a2e;
+            --text-secondary: #555570;
+            --text-muted: #999aab;
+            --accent: #9b7b3a;
+            --accent-glow: rgba(155, 123, 58, 0.08);
+            --accent-gradient: linear-gradient(135deg, #9b7b3a, #b8944f);
+            --border: #e5e5ee;
+            --border-light: #eaeaef;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg-deepest);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        ::selection { background: var(--accent-glow); color: var(--accent); }
+
+        /* Navbar */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg-deepest);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--accent); text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500;
+            transition: color var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .btn-submit {
+            background: var(--accent-gradient); color: #000;
+            padding: 0.5rem 1.25rem; border-radius: 6px;
+            font-weight: 600; font-size: 0.85rem; text-decoration: none;
+            transition: opacity var(--transition);
+        }
+        .btn-submit:hover { opacity: 0.85; }
+
+        /* Hero */
+        .hero {
+            text-align: center; padding: 4rem 2rem 3rem;
+            background: radial-gradient(ellipse at 50% 0%, var(--accent-glow), transparent 60%);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700; margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
+        .hero-stats { display: flex; gap: 2rem; justify-content: center; color: var(--text-muted); font-size: 0.85rem; }
+
+        /* News Bar */
+        .news-bar {
+            max-width: 1400px; margin: 0 auto 2rem; padding: 0 2rem;
+        }
+        .news-bar h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .news-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1rem;
+        }
+        .news-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem;
+            transition: all var(--transition);
+        }
+        .news-card:hover { background: var(--bg-card-hover); transform: translateY(-2px); }
+        .news-card .news-date { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+        .news-card .news-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .news-card .news-summary { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+        /* Tools */
+        .tools-section { max-width: 1400px; margin: 0 auto; padding: 0 2rem 3rem; }
+        .tools-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; margin-bottom: 1.5rem;
+        }
+        .tools-section h2 span { color: var(--accent); }
+        .tools-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+        .tool-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.5rem;
+            transition: all var(--transition);
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        .tool-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+        .tool-card .tool-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: var(--accent-glow);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1rem;
+        }
+        .tool-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .tool-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; }
+        .tool-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tool-tag {
+            background: var(--accent-glow); color: var(--accent);
+            padding: 0.2rem 0.6rem; border-radius: 4px;
+            font-size: 0.72rem; font-weight: 500;
+        }
+        .tool-pricing {
+            position: absolute; top: 1rem; right: 1rem;
+            font-size: 0.72rem; color: var(--text-muted);
+            background: var(--bg-deep); padding: 0.2rem 0.5rem; border-radius: 4px;
+        }
+        .badge-new {
+            position: absolute; top: 1rem; left: 1rem;
+            background: var(--accent-gradient); color: #000;
+            font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.5rem;
+            border-radius: 3px; text-transform: uppercase;
+        }
+
+        /* Category Nav */
+        .cat-nav {
+            max-width: 1400px; margin: 0 auto 2rem; padding: 0 2rem;
+            display: flex; flex-wrap: wrap; gap: 0.5rem;
+        }
+        .cat-btn {
+            background: var(--bg-card); border: 1px solid var(--border);
+            color: var(--text-secondary); padding: 0.5rem 1rem;
+            border-radius: 20px; font-size: 0.82rem; cursor: pointer;
+            transition: all var(--transition);
+        }
+        .cat-btn:hover, .cat-btn.active {
+            background: var(--accent-glow); color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem; text-align: center;
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .hero { padding: 2.5rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">AI Tools Nav</a>
+            <div class="nav-links">
+                <a href="#tools">AI工具</a>
+                <a href="#news">AI快讯</a>
+                <a href="#categories">分类</a>
+                <a href="https://github.com/Wizwo/ai-tools-nav" target="_blank">GitHub</a>
+                <a href="mailto:hi@aiux.top" class="btn-submit">提交工具</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>发现最好的AI工具</h1>
+        <p>收录30+精选AI工具，涵盖聊天AI、AI绘画、AI视频、AI写作、AI办公等热门分类，每日更新。</p>
+        <div class="hero-stats">
+            <span>🆕 新增15款工具</span>
+            <span>📊 49,000+ AI生态数据</span>
+            <span>📰 实时AI资讯</span>
+        </div>
+    </section>
+
+    <!-- AI News Section -->
+    <div class="news-bar" id="news">
+        <h2>📰 AI 最新动态</h2>
+        <div class="news-grid" id="newsGrid"></div>
+    </div>
+
+    <!-- Category Nav -->
+    <div class="cat-nav" id="categories">
+        <button class="cat-btn active" onclick="filterTools('all')">全部</button>
+        <button class="cat-btn" onclick="filterTools('聊天AI')">💬 聊天AI</button>
+        <button class="cat-btn" onclick="filterTools('AI绘画')">🎨 AI绘画</button>
+        <button class="cat-btn" onclick="filterTools('AI视频')">🎬 AI视频</button>
+        <button class="cat-btn" onclick="filterTools('AI写作')">✍️ AI写作</button>
+        <button class="cat-btn" onclick="filterTools('AI办公')">💼 AI办公</button>
+        <button class="cat-btn" onclick="filterTools('AI开发')">💻 AI开发</button>
+        <button class="cat-btn" onclick="filterTools('AI营销')">📢 AI营销</button>
+        <button class="cat-btn" onclick="filterTools('AI图像')">🖼️ AI图像</button>
+    </div>
+
+    <!-- Tools Section -->
+    <section class="tools-section" id="tools">
+        <h2>🔥 <span>热门工具</span> · Trending</h2>
+        <div class="tools-grid" id="trendingGrid"></div>
+    </section>
+
+    <section class="tools-section">
+        <h2>🆕 <span>最近新增</span> · New Arrivals</h2>
+        <div class="tools-grid" id="newGrid"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 <a href="https://aiux.top">aiux.top</a> · AI工具导航 · 
+        <a href="https://twitter.com/aiux_top">Twitter</a> · 
+        <a href="mailto:hi@aiux.top">hi@aiux.top</a></p>
+        <p style="margin-top:0.5rem">数据来源: Futurepedia · TAAFT · ProductHunt</p>
+    </footer>
+
+    <script>
+        // Trending tools
+        const trendingTools = [
+            {name:"ChatGPT", icon:"💬", url:"https://chat.openai.com", desc:"OpenAI开发的最强AI对话模型，支持写作、编程、分析等多场景应用", cat:"聊天AI", tags:["chatbot","写作","编程"], pricing:"免费/Plus $20", votes:"6,467"},
+            {name:"Midjourney", icon:"🎨", url:"https://midjourney.com", desc:"顶级AI绘画工具，通过文字描述生成高质量艺术作品", cat:"AI绘画", tags:["绘画","创意","设计"], pricing:"$10/月起", votes:"3,936"},
+            {name:"Claude", icon:"🧠", url:"https://claude.ai", desc:"Anthropic的AI助手，擅长长文本分析和安全对话", cat:"聊天AI", tags:["chatbot","分析","编程"], pricing:"免费/Pro $20", votes:"918"},
+            {name:"Perplexity", icon:"🔍", url:"https://perplexity.ai", desc:"AI驱动的搜索引擎，实时搜索并总结可信信息", cat:"AI搜索", tags:["搜索","研究","总结"], pricing:"免费/Pro $20", votes:"1,364"},
+            {name:"Google Gemini", icon:"🌐", url:"https://gemini.google.com", desc:"Google多模态AI，支持文本、图像、音频、视频处理", cat:"聊天AI", tags:["多模态","chatbot","编程"], pricing:"免费/Advanced", votes:"1,252"},
+            {name:"Grok", icon:"⚡", url:"https://grok.x.ai", desc:"xAI的实时AI助手，与数据、图像、代码和实时搜索对话", cat:"聊天AI", tags:["chatbot","实时","编程"], pricing:"免费/X Premium", votes:"476"},
+            {name:"Runway", icon:"🎬", url:"https://runwayml.com", desc:"AI视频生成和编辑平台，Gen-3模型支持文生视频", cat:"AI视频", tags:["视频","生成","编辑"], pricing:"免费/$15月起"},
+            {name:"Notion AI", icon:"📝", url:"https://notion.so", desc:"集成AI的笔记和项目管理工具，智能写作与知识管理", cat:"AI办公", tags:["笔记","项目管理","写作"], pricing:"$10/月起"},
+            {name:"Cursor", icon:"💻", url:"https://cursor.sh", desc:"AI原生代码编辑器，内置智能代码补全和多文件编辑", cat:"AI开发", tags:["编程","IDE","代码"], pricing:"免费/Pro $20"},
+            {name:"Stable Diffusion", icon:"🖼️", url:"https://stability.ai", desc:"开源AI图像生成模型，支持本地部署和自定义训练", cat:"AI绘画", tags:["绘画","开源","本地"], pricing:"免费/开源"},
+            {name:"Suno", icon:"🎵", url:"https://suno.ai", desc:"AI音乐生成器，输入歌词即可生成完整歌曲", cat:"AI音频", tags:["音乐","创作","生成"], pricing:"免费/Pro $10"},
+            {name:"Replit", icon:"🔄", url:"https://replit.com", desc:"在线AI编程环境，支持自然语言生成完整应用", cat:"AI开发", tags:["编程","在线IDE","AI Agent"], pricing:"免费/Core $20"}
+        ];
+
+        // New tools (crawled May 2026)
+        const newTools = [
+            {name:"UGO", icon:"📢", url:"https://ugo.ai", desc:"自主化AI营销团队，自动创建和发布社交媒体、博客、SEO内容", cat:"AI营销", tags:["营销","自动化","SEO"], pricing:"免费/$99月起", isNew:true},
+            {name:"CrafterQ AI", icon:"🤖", url:"https://crafterq.ai", desc:"AI客服聊天机器人，自动回复访客、捕获线索、分流工单", cat:"AI客服", tags:["客服","chatbot","线索"], pricing:"免费起步", isNew:true},
+            {name:"WriteHybrid", icon:"✍️", url:"https://writehybrid.com", desc:"AI草稿人化——将AI文本转为自然、通过AI检测的人类写作", cat:"AI写作", tags:["写作","反检测","改写"], pricing:"免费起步", isNew:true},
+            {name:"UpSynth", icon:"🔧", url:"https://upsynth.ai", desc:"AI图像放大与修复，精准控制每个编辑细节", cat:"AI图像", tags:["图像","放大","修复"], pricing:"免费起步", isNew:true},
+            {name:"GanttPRO", icon:"📊", url:"https://ganttpro.com", desc:"自然语言自动生成甘特图，AI驱动项目管理", cat:"AI办公", tags:["项目管理","甘特图","效率"], pricing:"免费起步", isNew:true},
+            {name:"Nimbalyst", icon:"⚙️", url:"https://nimbalyst.dev", desc:"AI辅助代码编辑与图表绘制，变更全程可审查", cat:"AI开发", tags:["编程","图表","AI Agent"], pricing:"免费起步", isNew:true},
+            {name:"FaceHub AI", icon:"📸", url:"https://facehub.ai", desc:"AI精修肖像，角色姿态控制与概念草图生成", cat:"AI图像", tags:["肖像","照片","创作"], pricing:"免费/$4.99起", isNew:true},
+            {name:"AI Product Photography", icon:"📷", url:"https://aiproductphotography.app", desc:"一张产品图生成完整电商图片套装", cat:"AI电商", tags:["电商","产品图","摄影"], pricing:"免费/$19.99起", isNew:true},
+            {name:"MusVideo", icon:"🎼", url:"https://musvideo.ai", desc:"AI将你的音乐转化为电影级MV视频", cat:"AI视频", tags:["音乐视频","MV","创意"], pricing:"$22.49/月起", isNew:true},
+            {name:"Flyne AI", icon:"🎥", url:"https://flyne.ai", desc:"照片一键转化为惊艳AI视频", cat:"AI视频", tags:["视频","照片转视频","创意"], pricing:"免费/$9.99起", isNew:true},
+            {name:"Silky AI", icon:"💇", url:"https://silky.ai", desc:"AI换发型，秒速试遍各种新发型", cat:"AI图像", tags:["发型","美容","时尚"], pricing:"免费/$3起", isNew:true},
+            {name:"InstantTranscriber", icon:"🎙️", url:"https://instanttranscriber.ai", desc:"音频视频几分钟内转精准文字记录", cat:"AI办公", tags:["转录","音频","效率"], pricing:"免费/$9.99起", isNew:true},
+            {name:"PatentFig AI", icon:"📜", url:"https://patentfig.ai", desc:"照片/草图生成USPTO标准专利申请附图", cat:"AI专业", tags:["专利","法律","绘图"], pricing:"免费/$20起", isNew:true},
+            {name:"CloudContact AI", icon:"📱", url:"https://cloudcontact.ai", desc:"金融合规短信+邮件自动化营销平台", cat:"AI营销", tags:["短信","邮件","营销"], pricing:"免费/$25月起", isNew:true},
+            {name:"HubSpot AEO", icon:"🎯", url:"https://hubspot.com/aeo", desc:"AI搜索引擎优化——提升品牌在AI推荐中的可见度", cat:"AI营销", tags:["SEO","品牌","优化"], pricing:"付费", isNew:true}
+        ];
+
+        // AI News
+        const news = [
+            {title:"AI搜索引擎优化(AEO)成为新趋势", summary:"HubSpot推出AEO工具，品牌开始优化在AI搜索中的推荐效果，传统SEO格局正在改变。", date:"2026-05-19", source:"Futurepedia"},
+            {title:"自主AI营销代理崛起", summary:"UGO等工具实现全自动社媒、博客、SEO内容创作发布，营销自动化进入AI代理时代。", date:"2026-05-19", source:"TAAFT"},
+            {title:"全球AI工具突破49,000个", summary:"TheresAnAIForThat收录AI工具已达49,218个，AI公司6,469家，生态高速扩张。", date:"2026-05-19", source:"TAAFT"},
+            {title:"多模态AI全面普及", summary:"Gemini、Grok等支持文本+图像+代码+音视频多模态交互，AI使用方式发生根本变化。", date:"2026-05", source:"Futurepedia"},
+            {title:"AI合规与反检测需求上升", summary:"WriteHybrid等反AI检测工具涌现，市场对AI内容自然化和合规性需求强烈。", date:"2026-05", source:"Futurepedia"}
+        ];
+
+        function renderToolCard(tool) {
+            const tags = tool.tags.map(t => `<span class="tool-tag">#${t}</span>`).join('');
+            const badge = tool.isNew ? '<span class="badge-new">NEW</span>' : '';
+            return `
+                <div class="tool-card" data-cat="${tool.cat}" onclick="window.open('${tool.url}','_blank')">
+                    ${badge}
+                    <span class="tool-pricing">${tool.pricing}</span>
+                    <div class="tool-icon">${tool.icon}</div>
+                    <h3>${tool.name}</h3>
+                    <p>${tool.desc}</p>
+                    <div class="tool-tags">${tags}</div>
+                </div>`;
+        }
+
+        function renderNewsCard(n) {
+            return `
+                <div class="news-card">
+                    <div class="news-date">${n.date} · ${n.source}</div>
+                    <div class="news-title">${n.title}</div>
+                    <div class="news-summary">${n.summary}</div>
+                </div>`;
+        }
+
+        document.getElementById('trendingGrid').innerHTML = trendingTools.map(renderToolCard).join('');
+        document.getElementById('newGrid').innerHTML = newTools.map(renderToolCard).join('');
+        document.getElementById('newsGrid').innerHTML = news.map(renderNewsCard).join('');
+
+        function filterTools(cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+            });
+        }
+
+        // JSON-LD Structured Data
+        const jsonld = {
+            "@context":"https://schema.org",
+            "@type":"WebSite",
+            "name":"AI工具导航",
+            "url":"https://aiux.top/",
+            "description":"收录最全的AI工具导航站，涵盖ChatGPT、Claude、Midjourney等热门AI工具",
+            "potentialAction":{"@type":"SearchAction","target":"https://aiux.top/?q={search_term_string}","query-input":"required name=search_term_string"}
+        };
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(jsonld);
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
